@@ -83,4 +83,19 @@ Numbers above are illustrative; no such example issues are claimed to exist.
 
 `intake.created`, `activity.started`, `context.versioned`, `feature.proposed`, `artifact.versioned`, `gate.evaluated`, `workflow.transitioned`.
 
-An implementation should avoid inventing audit events from incomplete GitHub metadata. The event ledger is a future design item.
+An implementation should avoid inventing audit events from incomplete GitHub metadata. The [v0.2 audit-model proposal](../architecture/audit-model.md) defines a candidate normalized event contract; a ledger implementation remains future work.
+
+## Proposed v0.2 activity binding
+
+The workflow states above remain distinct from [execution-attempt states](../architecture/activity-lifecycle.md). A decomposition attempt can be `completed` while the workflow awaits `Architecture review`; a gate requesting changes does not reopen that completed attempt.
+
+For the proposed reference profile:
+
+1. Bind each attempt to its definition, workflow, context, and input versions through a sealed execution manifest before starting.
+2. Pin completed outputs in a review evidence bundle. Record the gate decision separately from that bundle to avoid a self-referencing evaluated commit.
+3. Use a designated architecture reviewer distinct from the executor; record the applicable policy, authority, criteria results, and evaluated versions.
+4. On execution failure, preserve the terminal attempt and create an authorized retry after reconciling prior effects. On gate findings, create a rework successor with new pinned bindings as needed.
+5. Record the gate result and the authorized workflow transition as separate events. A material change after approval requires impact recording, a pause of affected progression, and reevaluation of the changed scope.
+
+See the [worked decomposition example](../../examples/decomposition-request/README.md#v02-lifecycle-and-audit-walkthrough) for a manual sequence with failure, retry, gate rework, and approval. This binding is proposed under Issue #3 and does not claim runtime enforcement.
+
