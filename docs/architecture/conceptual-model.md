@@ -97,7 +97,7 @@ activity:
     required_events: [activity.started, artifact.produced, activity.completed, gate.evaluated]
 ```
 
-The contract is illustrative, not a finalized machine-readable schema.
+The contract is illustrative, not a finalized machine-readable schema. Its v0.1 shorthand combines reusable contract fields with example execution bindings. The [v0.2 activity lifecycle proposal](activity-lifecycle.md) separates definition versions, work-item identities, execution attempts, and sealed execution manifests; the [v0.2 audit proposal](audit-model.md) defines the corresponding event requirements. These extensions remain proposed until their quality gate is satisfied.
 
 ## Execution independence
 
@@ -116,3 +116,6 @@ Phases are configurable. The reference flow begins with **intake → architectur
 5. How do cross-repository artifacts and multi-feature decompositions retain stable identities?
 
 These questions are intentionally unresolved in v0.1.
+
+The v0.2 proposals address minimum attempt states, version binding, event envelopes, and authorization at a conceptual level. Their review-decision sections identify remaining choices; storage adapters, executable schemas, and automated enforcement remain future work. See the [worked example](../../examples/decomposition-request/README.md) for failure, retry, and gate rework.
+
