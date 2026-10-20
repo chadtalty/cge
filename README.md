@@ -10,7 +10,9 @@ CGE defines **what constitutes governed engineering work**, independently of **w
 
 **Conceptual baseline v0.1 merged in [PR #2](https://github.com/chadtalty/cge/pull/2).** Individual v0.1 artifacts retain their recorded proposal status. This is an evolving reference model, not a claim of a complete implementation.
 
-**v0.2 lifecycle and audit contracts — proposed for review under [Issue #3](https://github.com/chadtalty/cge/issues/3).** The documents describe intended governance; executable schemas, runtime enforcement, and an event store are not implemented here.
+**v0.2 lifecycle and audit proposals merged in [PR #4](https://github.com/chadtalty/cge/pull/4).** Their recorded proposal status and outstanding [Issue #3](https://github.com/chadtalty/cge/issues/3) quality-gate disposition remain explicit. The documents describe intended governance; executable schemas, runtime enforcement, and an event store are not implemented here.
+
+**Consolidated alignment and runner design — proposed under [Issue #5](https://github.com/chadtalty/cge/issues/5).** This package captures the supplied specification and designs `init` / `status`; it does not implement those commands.
 
 ## Start here
 
@@ -21,6 +23,19 @@ CGE defines **what constitutes governed engineering work**, independently of **w
 - [Manual GitHub decomposition workflow](docs/workflows/decomposition.md)
 - [ADR-0001: Execution-independent core](docs/decisions/0001-execution-independent-core.md)
 - [Example decomposition request](examples/decomposition-request/README.md)
+
+## Runner design package
+
+- [Work package and design-review boundary](docs/planning/runner-design-work-package.md)
+- [Consolidated specification](docs/specification/consolidated-specification.md)
+- [Alignment assessment](docs/analysis/specification-alignment.md)
+- [Runner MVP specification](docs/specification/runner-mvp.md)
+- [Runner architecture](docs/architecture/runner-mvp.md)
+- Proposed ADRs: [language/interface](docs/decisions/0002-runner-cli-language.md), [state/evidence/publication](docs/decisions/0003-local-state-and-evidence.md), [identity/resume/status](docs/decisions/0004-runner-identity-and-resume.md)
+- [Verification plan](docs/verification/runner-mvp-plan.md) and [illustrative walkthrough](examples/runner-init-status/README.md)
+- [Completion and decision checklist](docs/reviews/runner-design-checklist.md)
+
+All runner command examples are proposals. Runtime scenarios are planned, not reported as passing tests. Required decisions and the design quality gate must be accepted against identified revisions before dependent implementation.
 
 ## Scope
 
